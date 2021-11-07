@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+
+  lb:
+    image: haproxy
+    depends_on:
+      - "redis"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./haproxy:/usr/local/etc/haproxy
+  
+  webserver1:
+    image: nodeapp
+    depends_on:
+      - "redis"
+    environment:
+      - PORT=1111
+      - REDIS_PORT=6379
+      - REDIS_HOST='20.198.110.73'
+  
+  webserver2:
+    image: nodeapp
+    depends_on:
+      - "redis"
+    environment:
+      - PORT=2222
+      - REDIS_PORT=6379
+      - REDIS_HOST=20.198.110.73
+  
+  webserver3:
+    image: nodeapp
+    depends_on:
+      - "redis"
+    environment:
+      - PORT=3333
+      - REDIS_PORT=6379
+      - REDIS_HOST=20.198.110.73
+
+  webserver4:
+    image: nodeapp
+    depends_on:
+      - "redis"
+    environment:
+      - PORT=4444
+      - REDIS_PORT=6379
+      - REDIS_HOST=20.198.110.73
+  
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
