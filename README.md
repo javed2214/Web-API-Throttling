@@ -11,4 +11,7 @@ To launch node, redis and haproxy containers:
 **docker-compose up -d**
 
 To check how many containers are running: 
-**docker ps**
+**docker ps -a**
+
+To terminate everything
+**docker-compose down**
