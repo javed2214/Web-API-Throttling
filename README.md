@@ -15,3 +15,5 @@ To check how many containers are running:
 
 To terminate everything
 **docker-compose down**
+
+You also need to modify the env variables in docker-compose.yml file.
